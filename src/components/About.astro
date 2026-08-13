@@ -37,8 +37,14 @@ const { lang } = Astro.props;
 <footer class="footer">
   <div class="container footer-inner">
     <p>&copy; {new Date().getFullYear()} Zhanheng Nie. Built with <a href="https://astro.build" target="_blank">Astro</a>.</p>
+    <p class="visitor-count">
+      <span id="busuanzi_container_site_pv">
+        {lang === 'en' ? 'Total visits: ' : '总访问量：'}<span id="busuanzi_value_site_pv"></span>
+      </span>
+    </p>
   </div>
 </footer>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 <style>
   .about-grid {
@@ -87,6 +93,11 @@ const { lang } = Astro.props;
   .footer-inner {
     text-align: center;
     font-size: 0.82rem;
+    color: var(--slate);
+  }
+  .visitor-count {
+    margin-top: 0.3rem;
+    font-size: 0.78rem;
     color: var(--slate);
   }
   @media (max-width: 768px) {
