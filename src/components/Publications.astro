@@ -8,6 +8,7 @@ const { lang } = Astro.props;
 
 const statusLabel = {
   'Published': { en: 'Published', zh: '已发表', class: 'status-published' },
+  'Accepted': { en: 'Accepted', zh: '已录用', class: 'status-accepted' },
   'Technical Report': { en: 'Technical Report', zh: '技术报告', class: 'status-report' }
 };
 ---
@@ -136,6 +137,10 @@ const statusLabel = {
   .status-published {
     background: rgba(49, 94, 138, 0.1);
     color: var(--route-blue);
+  }
+  .status-accepted {
+    background: rgba(46, 139, 87, 0.1);
+    color: #2e8b57;
   }
   .status-report {
     background: rgba(101, 114, 125, 0.1);

@@ -3,7 +3,7 @@ export interface Publication {
   authors: string;
   venue: string;
   year: number;
-  status: 'Published' | 'Technical Report';
+  status: 'Published' | 'Accepted' | 'Technical Report';
   highlight?: 'Oral' | 'Poster';
   role: string;
   arxiv?: string;
@@ -30,21 +30,6 @@ export const publications: Publication[] = [
     }
   },
   {
-    title: 'MOON3.0: Reasoning-aware Multimodal Representation Learning for E-commerce Product Understanding',
-    authors: 'Junxian Wu*, Chenghan Fu*, Zhanheng Nie*, Daoze Zhang*, et al.',
-    venue: 'ACM MM 2026',
-    year: 2026,
-    status: 'Published',
-    highlight: 'Poster',
-    role: 'Co-first author',
-    arxiv: 'https://arxiv.org/abs/2604.00513',
-    image: '/assets/projects/moon3.png',
-    tldr: {
-      en: 'We propose the first reasoning-aware MLLM for product representation, combining contrastive learning with GRPO reinforcement and a FIRE module for fine-grained details.',
-      zh: '首个推理感知的多模态大模型商品表征系统，结合对比学习与 GRPO 强化训练及 FIRE 细粒度增强模块。'
-    }
-  },
-  {
     title: 'MOON: Generative MLLM-based Multimodal Representation Learning for E-commerce Product Understanding',
     authors: 'Daoze Zhang*, Chenghan Fu*, Zhanheng Nie*, Jianyu Liu*, et al.',
     venue: 'WSDM 2026',
@@ -58,6 +43,21 @@ export const publications: Publication[] = [
     tldr: {
       en: 'We propose the first generative MLLM-based product representation model with Guided MoE and specialized negative sampling.',
       zh: '首个基于生成式多模态大模型的商品表征模型，引入引导式 MoE 和专用负采样策略。'
+    }
+  },
+  {
+    title: 'MOON3.0: Reasoning-aware Multimodal Representation Learning for E-commerce Product Understanding',
+    authors: 'Junxian Wu*, Chenghan Fu*, Zhanheng Nie*, Daoze Zhang*, et al.',
+    venue: 'ACM MM 2026',
+    year: 2026,
+    status: 'Accepted',
+    highlight: 'Poster',
+    role: 'Co-first author',
+    arxiv: 'https://arxiv.org/abs/2604.00513',
+    image: '/assets/projects/moon3.png',
+    tldr: {
+      en: 'We propose the first reasoning-aware MLLM for product representation, combining contrastive learning with GRPO reinforcement and a FIRE module for fine-grained details.',
+      zh: '首个推理感知的多模态大模型商品表征系统，结合对比学习与 GRPO 强化训练及 FIRE 细粒度增强模块。'
     }
   },
   {

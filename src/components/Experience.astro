@@ -15,7 +15,11 @@ const { lang } = Astro.props;
     <div class="exp-list">
       {experiences.map((exp) => (
         <article class="exp-item">
-          <div class="exp-period">{exp.period}</div>
+          <div class="exp-period">
+            <span class="exp-date">{exp.periodStart}</span>
+            <span class="exp-separator">—</span>
+            <span class="exp-date">{exp.periodEnd}</span>
+          </div>
           <div class="exp-content">
             <h3 class="exp-title">{exp.title[lang]}</h3>
             <p class="exp-org">{exp.org[lang]}</p>
@@ -54,10 +58,24 @@ const { lang } = Astro.props;
     border: 1px solid var(--soft-sage);
   }
   .exp-period {
-    font-size: 0.85rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     font-family: var(--font-mono);
     color: var(--slate);
-    padding-top: 0.2rem;
+    text-align: center;
+  }
+  .exp-date {
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: 0.01em;
+  }
+  .exp-separator {
+    font-size: 0.8rem;
+    color: var(--soft-sage);
+    line-height: 1.8;
   }
   .exp-title {
     font-family: var(--font-body);
