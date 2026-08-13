@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <rect width="64" height="64" rx="10" fill="#315E8A"/>
-  <!-- NZ ligature: N's left vertical + Z's top/bottom horizontals share the diagonal -->
-  <path d="M11 17V47" stroke="#F6F8F7" stroke-width="4.8" stroke-linecap="round" fill="none"/>
-  <path d="M11 17H29L11 47H29" stroke="#F6F8F7" stroke-width="4.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <!-- H -->
-  <path d="M37 17V47" stroke="#D86B35" stroke-width="4.8" stroke-linecap="round" fill="none"/>
-  <path d="M53 17V47" stroke="#D86B35" stroke-width="4.8" stroke-linecap="round" fill="none"/>
-  <path d="M37 32H53" stroke="#D86B35" stroke-width="4.8" stroke-linecap="round" fill="none"/>
+  <!-- NZH monogram: all white, connected ligature -->
+  <!-- N: left vertical + diagonal down-right -->
+  <path d="M8 48V16L22 48" stroke="#F6F8F7" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <!-- Z: top horizontal from N's top-right, diagonal down-left, bottom horizontal -->
+  <path d="M22 16H36L22 48H36" stroke="#F6F8F7" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <!-- H: left vertical shared with Z's right end, crossbar, right vertical -->
+  <path d="M42 16V48M56 16V48M42 32H56" stroke="#F6F8F7" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
 </svg>
