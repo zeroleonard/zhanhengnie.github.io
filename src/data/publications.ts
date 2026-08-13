@@ -3,12 +3,13 @@ export interface Publication {
   authors: string;
   venue: string;
   year: number;
-  status: 'Published' | 'Under Review' | 'Technical Report';
+  status: 'Published' | 'Technical Report';
   highlight?: 'Oral' | 'Poster';
   role: string;
   arxiv?: string;
   dataset?: string;
-  abstract: { en: string; zh: string };
+  image: string;
+  tldr: { en: string; zh: string };
 }
 
 export const publications: Publication[] = [
@@ -22,9 +23,10 @@ export const publications: Publication[] = [
     role: 'Co-first author (1st), independently led all work',
     arxiv: 'https://arxiv.org/abs/2511.12449',
     dataset: 'https://huggingface.co/datasets/ZHNie/MBE2.0',
-    abstract: {
-      en: 'Proposes Modality-Driven MoE, Dual-Level Alignment, and MLLM-based co-augmentation to address modality imbalance in multimodal product representation. Achieves SOTA on MBE2.0 and multiple public benchmarks.',
-      zh: '提出模态驱动 MoE、双层对齐和基于 MLLM 的协同增强，解决多模态商品表征中的模态不平衡问题。在 MBE2.0 及多个公开基准上达到 SOTA。'
+    image: '/assets/projects/moon2.png',
+    tldr: {
+      en: 'We propose Modality-Driven MoE and Dual-Level Alignment to solve modality imbalance in multimodal product representation, achieving SOTA on multiple benchmarks.',
+      zh: '提出模态驱动 MoE 和双层对齐，解决多模态商品表征的模态不平衡问题，在多个基准上达到 SOTA。'
     }
   },
   {
@@ -36,9 +38,10 @@ export const publications: Publication[] = [
     highlight: 'Poster',
     role: 'Co-first author',
     arxiv: 'https://arxiv.org/abs/2604.00513',
-    abstract: {
-      en: 'First reasoning-aware MLLM for product representation. Introduces joint contrastive-RL (GRPO) training and FIRE module for fine-grained detail preservation.',
-      zh: '首个推理感知的多模态大模型商品表征系统。引入对比-强化学习联合训练（GRPO）和 FIRE 模块实现细粒度细节保留。'
+    image: '/assets/projects/moon3.png',
+    tldr: {
+      en: 'We propose the first reasoning-aware MLLM for product representation, combining contrastive learning with GRPO reinforcement and a FIRE module for fine-grained details.',
+      zh: '首个推理感知的多模态大模型商品表征系统，结合对比学习与 GRPO 强化训练及 FIRE 细粒度增强模块。'
     }
   },
   {
@@ -50,33 +53,10 @@ export const publications: Publication[] = [
     highlight: 'Oral',
     role: 'Co-first author',
     arxiv: 'https://arxiv.org/abs/2508.11999',
-    abstract: {
-      en: 'First generative MLLM-based product representation model. Proposes Guided MoE, core semantic region detection, and specialized negative sampling for multimodal product understanding.',
-      zh: '首个基于生成式多模态大模型的商品表征模型。提出引导式 MoE、核心语义区域检测和专用负采样策略。'
-    }
-  },
-  {
-    title: 'One Step to Realistic: Advancing Infinite Continual Learning with Hierarchical Mixture Architectures',
-    authors: 'Zhanheng Nie*, Qisen Wang*, Yifan Zhao, Jia Li',
-    venue: 'IEEE TCSVT',
-    year: 2025,
-    status: 'Under Review',
-    role: 'Co-first author (1st)',
-    abstract: {
-      en: 'Formalizes online infinite continual learning and proposes H-MoMaE, a hierarchical Mixture-of-Models-and-Experts architecture with dynamic sparse routing for unbounded data streams.',
-      zh: '形式化在线无限持续学习范式，提出 H-MoMaE 层次化模型-专家混合架构，通过动态稀疏路由应对无界数据流。'
-    }
-  },
-  {
-    title: 'HMoLA-Diff: Hierarchical MoE-LoRA for Continual Few-Shot Personalized T2I Generation',
-    authors: 'Zhanheng Nie, Yifan Zhao, Hongyu Wu, Qigang Wang, et al.',
-    venue: 'ICXR 2026',
-    year: 2025,
-    status: 'Under Review',
-    role: 'Sole first author',
-    abstract: {
-      en: 'Hierarchical MoE-LoRA with cross-modal prototype routing for continual personalization of diffusion models. Only 4.82M trainable parameters, achieving positive backward transfer across all task orderings.',
-      zh: '层次化 MoE-LoRA 结合跨模态原型路由，实现扩散模型的持续个性化生成。仅 4.82M 可训练参数，在所有任务序列上实现正向后向迁移。'
+    image: '/assets/projects/moon1.png',
+    tldr: {
+      en: 'We propose the first generative MLLM-based product representation model with Guided MoE and specialized negative sampling.',
+      zh: '首个基于生成式多模态大模型的商品表征模型，引入引导式 MoE 和专用负采样策略。'
     }
   },
   {
@@ -87,9 +67,10 @@ export const publications: Publication[] = [
     status: 'Technical Report',
     role: 'Co-first author',
     arxiv: 'https://arxiv.org/abs/2511.11305',
-    abstract: {
-      en: 'Comprehensive 31-page account of deploying MOON across Taobao search advertising (recall, relevance, ranking), reporting +20% cumulative CTR improvement over three years.',
-      zh: '31 页完整技术报告，记录 MOON 在淘宝搜索广告全链路（召回、相关性、排序）的部署，累计 +20% CTR 提升。'
+    image: '/assets/projects/moon_report.png',
+    tldr: {
+      en: 'A comprehensive 31-page report documenting MOON deployment across Taobao search advertising, achieving cumulative +20% CTR over three years.',
+      zh: '31 页完整技术报告，记录 MOON 在淘宝搜索广告全链路部署，累计 +20% CTR 提升。'
     }
   }
 ];

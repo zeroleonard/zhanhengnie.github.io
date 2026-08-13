@@ -1,0 +1,106 @@
+---
+import { news } from '../data/news';
+
+interface Props {
+  lang: 'en' | 'zh';
+}
+const { lang } = Astro.props;
+
+const typeIcon = {
+  'Research': '📄',
+  'Award': '🏆',
+  'Work': '💼'
+};
+---
+
+<section id="news" class="section news-section">
+  <div class="container">
+    <h2 class="section-title">{lang === 'en' ? 'News' : '最新动态'}</h2>
+    <div class="timeline">
+      {news.map((item) => (
+        <div class="timeline-item">
+          <div class="timeline-date">{item.date}</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-type">{typeIcon[item.type]} {item.type}</span>
+            <p class="timeline-text" set:html={item.content[lang]} />
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .news-section {
+    background: white;
+  }
+  .timeline {
+    position: relative;
+    padding-left: 140px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 130px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--soft-sage);
+  }
+  .timeline-item {
+    position: relative;
+    padding-bottom: 1.5rem;
+    padding-left: 1.5rem;
+  }
+  .timeline-date {
+    position: absolute;
+    left: -140px;
+    top: 0.1rem;
+    width: 120px;
+    text-align: right;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--slate);
+  }
+  .timeline-dot {
+    position: absolute;
+    left: -6px;
+    top: 0.45rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--route-blue);
+    border: 2px solid var(--paper);
+    box-shadow: 0 0 0 2px var(--soft-sage);
+  }
+  .timeline-type {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--route-blue);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  .timeline-text {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-top: 0.2rem;
+  }
+  @media (max-width: 768px) {
+    .timeline {
+      padding-left: 1.5rem;
+    }
+    .timeline::before {
+      left: 0;
+    }
+    .timeline-date {
+      position: static;
+      width: auto;
+      text-align: left;
+      margin-bottom: 0.2rem;
+    }
+    .timeline-dot {
+      left: -1.5rem;
+    }
+  }
+</style>

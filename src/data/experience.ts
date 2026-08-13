@@ -20,8 +20,8 @@ export const experiences: Experience[] = [
     org: { en: 'Beihang University, School of CS&E', zh: '北京航空航天大学，计算机学院' },
     period: 'Sep 2024 — Present',
     desc: {
-      en: 'Research on continual learning and mixture-of-experts architectures under Prof. Jia Li. Published at CVPR, WSDM, and ACM MM. Proposed H-MoMaE for online infinite continual learning and HMoLA-Diff for continual personalized generation.',
-      zh: '在李甲教授指导下研究持续学习与混合专家架构。在 CVPR、WSDM、ACM MM 发表论文。提出面向在线无限持续学习的 H-MoMaE 和面向持续个性化生成的 HMoLA-Diff。'
+      en: 'Research on continual learning and mixture-of-experts architectures under Prof. Jia Li. Published at CVPR, WSDM, and ACM MM. Investigating hierarchical MoE approaches for online continual learning and continual personalized generation.',
+      zh: '在李甲教授指导下研究持续学习与混合专家架构。在 CVPR、WSDM、ACM MM 发表论文。探索层次化 MoE 方法在在线持续学习与持续个性化生成中的应用。'
     }
   },
   {
