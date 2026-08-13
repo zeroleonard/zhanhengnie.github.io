@@ -1,0 +1,151 @@
+---
+import { profile } from '../data/profile';
+import { projects } from '../data/projects';
+
+interface Props {
+  lang: 'en' | 'zh';
+}
+const { lang } = Astro.props;
+---
+
+<section id="research" class="section">
+  <div class="container">
+    <h2 class="section-title">{lang === 'en' ? 'Research' : '研究方向'}</h2>
+
+    <div class="focus-grid">
+      {profile.researchFocus[lang].map((focus) => (
+        <div class="focus-card">
+          <h3 class="focus-title">{focus.title}</h3>
+          <p class="focus-desc">{focus.desc}</p>
+        </div>
+      ))}
+    </div>
+
+    <h3 class="subsection-title">{lang === 'en' ? 'Selected Research' : '代表性研究'}</h3>
+
+    <div class="projects">
+      {projects.map((project) => (
+        <article class="project-card">
+          <div class="project-header">
+            <h4 class="project-title">{project.title}</h4>
+            <span class="project-tagline">{project.tagline[lang]}</span>
+          </div>
+          <p class="project-desc">{project.desc[lang]}</p>
+          <ul class="project-highlights">
+            {project.highlights[lang].map((h) => (
+              <li>{h}</li>
+            ))}
+          </ul>
+          <div class="project-papers">
+            {project.papers.map((p) => (
+              <span class="paper-tag">{p}</span>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .focus-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+  }
+  .focus-card {
+    padding: var(--spacing-md);
+    background: white;
+    border-radius: 8px;
+    border: 1px solid var(--soft-sage);
+    transition: border-color 0.2s;
+  }
+  .focus-card:hover {
+    border-color: var(--route-blue);
+  }
+  .focus-title {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--route-blue);
+    margin-bottom: var(--spacing-xs);
+  }
+  .focus-desc {
+    font-size: 0.9rem;
+    color: var(--slate);
+  }
+  .subsection-title {
+    font-size: 1.3rem;
+    margin-bottom: var(--spacing-md);
+  }
+  .projects {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+  .project-card {
+    padding: var(--spacing-md);
+    background: white;
+    border-radius: 8px;
+    border: 1px solid var(--soft-sage);
+    border-left: 4px solid var(--route-blue);
+  }
+  .project-header {
+    margin-bottom: var(--spacing-sm);
+  }
+  .project-title {
+    font-family: var(--font-body);
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+  .project-tagline {
+    font-size: 0.9rem;
+    color: var(--signal-orange);
+    font-weight: 500;
+  }
+  .project-desc {
+    font-size: 0.92rem;
+    color: var(--slate);
+    margin-bottom: var(--spacing-sm);
+  }
+  .project-highlights {
+    list-style: none;
+    margin-bottom: var(--spacing-sm);
+  }
+  .project-highlights li {
+    position: relative;
+    padding-left: 1.2rem;
+    font-size: 0.88rem;
+    margin-bottom: 0.3rem;
+  }
+  .project-highlights li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55rem;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--route-blue);
+  }
+  .project-papers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .paper-tag {
+    font-size: 0.78rem;
+    padding: 0.2rem 0.6rem;
+    background: rgba(49, 94, 138, 0.08);
+    color: var(--route-blue);
+    border-radius: 4px;
+    font-weight: 500;
+  }
+  @media (max-width: 768px) {
+    .focus-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

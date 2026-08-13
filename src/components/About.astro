@@ -1,0 +1,97 @@
+---
+import { profile } from '../data/profile';
+
+interface Props {
+  lang: 'en' | 'zh';
+}
+const { lang } = Astro.props;
+---
+
+<section id="about" class="section">
+  <div class="container">
+    <h2 class="section-title">{lang === 'en' ? 'About' : '关于我'}</h2>
+
+    <div class="about-grid">
+      <div class="about-bio">
+        <p>{profile.bio[lang].long}</p>
+        <p class="about-interest">
+          {lang === 'en'
+            ? 'I am actively seeking PhD opportunities for Fall 2027. If you are interested in collaboration or have openings in related research areas, please feel free to reach out.'
+            : '我正在寻找 2027 年秋季入学的博士机会。如果您对相关研究方向的合作感兴趣或有招生计划，欢迎联系我。'}
+        </p>
+      </div>
+      <div class="about-contact">
+        <h3 class="contact-title">{lang === 'en' ? 'Contact & Links' : '联系方式'}</h3>
+        <ul class="contact-list">
+          <li><span class="contact-label">Email</span><a href={`mailto:${profile.email}`}>{profile.email}</a></li>
+          <li><span class="contact-label">Scholar</span><a href={profile.scholar} target="_blank">Google Scholar</a></li>
+          <li><span class="contact-label">GitHub</span><a href={profile.github} target="_blank">zeroleonard</a></li>
+          <li><span class="contact-label">HuggingFace</span><a href={profile.huggingface} target="_blank">ZHNie</a></li>
+          <li><span class="contact-label">ORCID</span><a href={profile.orcid} target="_blank">0009-0007-6313-3504</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <p>&copy; {new Date().getFullYear()} Zhanheng Nie. Built with <a href="https://astro.build" target="_blank">Astro</a>.</p>
+  </div>
+</footer>
+
+<style>
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: var(--spacing-lg);
+  }
+  .about-bio p {
+    font-size: 0.95rem;
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.8;
+  }
+  .about-interest {
+    color: var(--route-blue);
+    font-weight: 500;
+  }
+  .contact-title {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+  }
+  .contact-list {
+    list-style: none;
+  }
+  .contact-list li {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--soft-sage);
+    font-size: 0.9rem;
+  }
+  .contact-label {
+    font-weight: 500;
+    min-width: 90px;
+    color: var(--slate);
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+  .footer {
+    border-top: 1px solid var(--soft-sage);
+    padding: var(--spacing-md) 0;
+  }
+  .footer-inner {
+    text-align: center;
+    font-size: 0.82rem;
+    color: var(--slate);
+  }
+  @media (max-width: 768px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

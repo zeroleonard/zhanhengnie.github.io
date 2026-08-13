@@ -1,0 +1,119 @@
+---
+interface Props {
+  lang: 'en' | 'zh';
+}
+const { lang } = Astro.props;
+
+const nav = {
+  en: [
+    { label: 'Research', href: '#research' },
+    { label: 'Publications', href: '#publications' },
+    { label: 'Experience', href: '#experience' },
+    { label: 'About', href: '#about' },
+  ],
+  zh: [
+    { label: '研究', href: '#research' },
+    { label: '论文', href: '#publications' },
+    { label: '经历', href: '#experience' },
+    { label: '关于', href: '#about' },
+  ]
+};
+
+const langSwitch = lang === 'en'
+  ? { label: '中文', href: '/zh/' }
+  : { label: 'EN', href: '/' };
+---
+
+<header class="header">
+  <div class="container header-inner">
+    <a href={lang === 'en' ? '/' : '/zh/'} class="header-name">Zhanheng Nie</a>
+    <nav class="header-nav">
+      {nav[lang].map(item => (
+        <a href={item.href} class="nav-link">{item.label}</a>
+      ))}
+      <a href={langSwitch.href} class="nav-link lang-switch">{langSwitch.label}</a>
+    </nav>
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--paper);
+    border-bottom: 1px solid var(--soft-sage);
+    backdrop-filter: blur(8px);
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 4rem;
+  }
+  .header-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--ink);
+  }
+  .header-nav {
+    display: flex;
+    gap: var(--spacing-md);
+    align-items: center;
+  }
+  .nav-link {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--slate);
+  }
+  .nav-link:hover {
+    color: var(--route-blue);
+  }
+  .lang-switch {
+    padding: 0.25rem 0.75rem;
+    border: 1px solid var(--soft-sage);
+    border-radius: 4px;
+    font-size: 0.8rem;
+  }
+  .mobile-menu-btn {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .mobile-menu-btn span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: var(--ink);
+  }
+  @media (max-width: 768px) {
+    .header-nav { display: none; }
+    .mobile-menu-btn { display: flex; }
+    .header-nav.active {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 4rem;
+      left: 0;
+      right: 0;
+      background: var(--paper);
+      padding: var(--spacing-md);
+      border-bottom: 1px solid var(--soft-sage);
+      gap: var(--spacing-sm);
+    }
+  }
+</style>
+
+<script>
+  const btn = document.querySelector('.mobile-menu-btn');
+  const nav = document.querySelector('.header-nav');
+  btn?.addEventListener('click', () => nav?.classList.toggle('active'));
+</script>

@@ -1,0 +1,143 @@
+---
+import { publications } from '../data/publications';
+
+interface Props {
+  lang: 'en' | 'zh';
+}
+const { lang } = Astro.props;
+
+const statusLabel = {
+  'Published': { en: 'Published', zh: '已发表', class: 'status-published' },
+  'Under Review': { en: 'Under Review', zh: '在审', class: 'status-review' },
+  'Technical Report': { en: 'Technical Report', zh: '技术报告', class: 'status-report' }
+};
+---
+
+<section id="publications" class="section">
+  <div class="container">
+    <h2 class="section-title">{lang === 'en' ? 'Publications' : '论文发表'}</h2>
+    <p class="pub-note">{lang === 'en' ? '* denotes equal contribution' : '* 表示同等贡献'}</p>
+
+    <div class="pub-list">
+      {publications.map((pub) => (
+        <article class="pub-item">
+          <div class="pub-meta">
+            <span class={`pub-status ${statusLabel[pub.status].class}`}>
+              {statusLabel[pub.status][lang]}
+            </span>
+            {pub.highlight && <span class="pub-highlight">{pub.highlight}</span>}
+            <span class="pub-venue">{pub.venue}</span>
+          </div>
+          <h3 class="pub-title">{pub.title}</h3>
+          <p class="pub-authors">{pub.authors}</p>
+          <p class="pub-role">{pub.role}</p>
+          <p class="pub-abstract">{pub.abstract[lang]}</p>
+          <div class="pub-links">
+            {pub.arxiv && <a href={pub.arxiv} target="_blank" class="pub-link">Paper</a>}
+            {pub.dataset && <a href={pub.dataset} target="_blank" class="pub-link">Dataset</a>}
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .pub-note {
+    font-size: 0.85rem;
+    color: var(--slate);
+    margin-bottom: var(--spacing-md);
+  }
+  .pub-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+  .pub-item {
+    padding: var(--spacing-md);
+    background: white;
+    border-radius: 8px;
+    border: 1px solid var(--soft-sage);
+  }
+  .pub-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .pub-status {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+  .status-published {
+    background: rgba(49, 94, 138, 0.1);
+    color: var(--route-blue);
+  }
+  .status-review {
+    background: rgba(216, 107, 53, 0.1);
+    color: var(--signal-orange);
+  }
+  .status-report {
+    background: rgba(101, 114, 125, 0.1);
+    color: var(--slate);
+  }
+  .pub-highlight {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+    background: var(--signal-orange);
+    color: white;
+  }
+  .pub-venue {
+    font-size: 0.85rem;
+    color: var(--slate);
+    font-weight: 500;
+  }
+  .pub-title {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    line-height: 1.4;
+  }
+  .pub-authors {
+    font-size: 0.85rem;
+    color: var(--slate);
+    margin-bottom: 0.2rem;
+  }
+  .pub-role {
+    font-size: 0.8rem;
+    color: var(--signal-orange);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  .pub-abstract {
+    font-size: 0.88rem;
+    color: var(--slate);
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+  }
+  .pub-links {
+    display: flex;
+    gap: 0.5rem;
+  }
+  .pub-link {
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 0.3rem 0.8rem;
+    border: 1px solid var(--route-blue);
+    border-radius: 4px;
+    color: var(--route-blue);
+    transition: all 0.2s;
+  }
+  .pub-link:hover {
+    background: var(--route-blue);
+    color: white;
+  }
+</style>
