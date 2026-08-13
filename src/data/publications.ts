@@ -53,6 +53,7 @@ export const publications: Publication[] = [
     highlight: 'Oral',
     role: 'Co-first author',
     arxiv: 'https://arxiv.org/abs/2508.11999',
+    dataset: 'https://huggingface.co/datasets/Daoze/MM-Bench-E-Commerce',
     image: '/assets/projects/moon1.png',
     tldr: {
       en: 'We propose the first generative MLLM-based product representation model with Guided MoE and specialized negative sampling.',

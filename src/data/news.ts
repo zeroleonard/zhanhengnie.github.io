@@ -14,11 +14,11 @@ export const news: NewsItem[] = [
     }
   },
   {
-    date: 'Feb. 2026',
+    date: 'Jun. 2026',
     type: 'Research',
     content: {
-      en: '<b>1 paper</b> accepted by CVPR 2026 (<b>co-first author, independently led</b>)',
-      zh: '<b>1 篇论文</b>被 CVPR 2026 录用（<b>共一排名第一，独立主导</b>）'
+      en: '<b>1 paper</b> published at CVPR 2026 (<b>co-first author, independently led</b>)',
+      zh: '<b>1 篇论文</b>在 CVPR 2026 发表（<b>共一排名第一，独立主导</b>）'
     }
   },
   {
