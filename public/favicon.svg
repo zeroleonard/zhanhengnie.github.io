@@ -1,4 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="4" fill="#315E8A"/>
-  <text x="16" y="22" text-anchor="middle" font-family="serif" font-size="18" font-weight="700" fill="#F6F8F7">N</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="10" fill="#315E8A"/>
+  <!-- NZ ligature: N's left vertical + Z's top/bottom horizontals share the diagonal -->
+  <path d="M11 17V47" stroke="#F6F8F7" stroke-width="4.8" stroke-linecap="round" fill="none"/>
+  <path d="M11 17H29L11 47H29" stroke="#F6F8F7" stroke-width="4.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <!-- H -->
+  <path d="M37 17V47" stroke="#D86B35" stroke-width="4.8" stroke-linecap="round" fill="none"/>
+  <path d="M53 17V47" stroke="#D86B35" stroke-width="4.8" stroke-linecap="round" fill="none"/>
+  <path d="M37 32H53" stroke="#D86B35" stroke-width="4.8" stroke-linecap="round" fill="none"/>
 </svg>
