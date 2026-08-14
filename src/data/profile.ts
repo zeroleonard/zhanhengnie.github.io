@@ -17,7 +17,7 @@ export const profile = {
   },
   email: 'NieZH@buaa.edu.cn',
   scholar: 'https://scholar.google.com/citations?user=Kj35CWsAAAAJ&hl=en',
-  github: 'https://github.com/zeroleonard',
+  github: 'https://github.com/zhanhengnie',
   huggingface: 'https://huggingface.co/ZHNie',
   orcid: 'https://orcid.org/0009-0007-6313-3504',
   researchFocus: {

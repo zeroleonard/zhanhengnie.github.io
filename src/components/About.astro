@@ -25,7 +25,7 @@ const { lang } = Astro.props;
         <ul class="contact-list">
           <li><span class="contact-label">Email</span><a href={`mailto:${profile.email}`}>{profile.email}</a></li>
           <li><span class="contact-label">Scholar</span><a href={profile.scholar} target="_blank">Google Scholar</a></li>
-          <li><span class="contact-label">GitHub</span><a href={profile.github} target="_blank">zeroleonard</a></li>
+          <li><span class="contact-label">GitHub</span><a href={profile.github} target="_blank">zhanhengnie</a></li>
           <li><span class="contact-label">HuggingFace</span><a href={profile.huggingface} target="_blank">ZHNie</a></li>
           <li><span class="contact-label">ORCID</span><a href={profile.orcid} target="_blank">0009-0007-6313-3504</a></li>
         </ul>
@@ -80,7 +80,8 @@ const { lang } = Astro.props;
   }
   .contact-label {
     font-weight: 500;
-    min-width: 90px;
+    min-width: 110px;
+    flex-shrink: 0;
     color: var(--slate);
     font-size: 0.82rem;
     text-transform: uppercase;
