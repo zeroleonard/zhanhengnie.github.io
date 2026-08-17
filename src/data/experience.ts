@@ -1,6 +1,8 @@
 export interface Experience {
+  kind: 'internship' | 'research' | 'education';
   title: { en: string; zh: string };
   org: { en: string; zh: string };
+  brief?: { org: { en: string; zh: string }; role: { en: string; zh: string } };
   periodStart: string;
   periodEnd: string;
   desc: { en: string; zh: string };
@@ -8,8 +10,13 @@ export interface Experience {
 
 export const experiences: Experience[] = [
   {
+    kind: 'internship',
     title: { en: 'Research Intern / LLM Algorithm Engineer', zh: '研究实习生 / LLM 算法工程师' },
     org: { en: 'Alibaba Group, Taobao & Tmall Search Advertising', zh: '阿里巴巴集团，淘天搜索广告' },
+    brief: {
+      org: { en: 'Alibaba Group', zh: '阿里巴巴集团' },
+      role: { en: 'Research Intern, Search Ads', zh: '研究实习生，搜索广告' }
+    },
     periodStart: 'Apr 2025',
     periodEnd: 'Present',
     desc: {
@@ -18,6 +25,7 @@ export const experiences: Experience[] = [
     }
   },
   {
+    kind: 'research',
     title: { en: 'Graduate Researcher', zh: '硕士研究生' },
     org: { en: 'Beihang University, School of CS&E', zh: '北京航空航天大学，计算机学院' },
     periodStart: 'Sep 2024',
@@ -28,6 +36,7 @@ export const experiences: Experience[] = [
     }
   },
   {
+    kind: 'education',
     title: { en: 'B.Eng. in Software Engineering', zh: '软件工程学士' },
     org: { en: 'Beihang University, School of Software', zh: '北京航空航天大学，软件学院' },
     periodStart: 'Sep 2019',
@@ -38,3 +47,5 @@ export const experiences: Experience[] = [
     }
   }
 ];
+
+export const internships = experiences.filter((exp) => exp.kind === 'internship');

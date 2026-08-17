@@ -26,7 +26,10 @@ const langSwitch = lang === 'en'
 
 <header class="header">
   <div class="container header-inner">
-    <a href={lang === 'en' ? '/' : '/zh/'} class="header-name">Zhanheng Nie</a>
+    <a href={lang === 'en' ? '/' : '/zh/'} class="header-name">
+      <img src="/favicon.svg" alt="" width="30" height="30" class="header-mark" />
+      <span>Zhanheng Nie</span>
+    </a>
     <nav class="header-nav">
       {nav[lang].map(item => (
         <a href={item.href} class="nav-link">{item.label}</a>
@@ -55,10 +58,27 @@ const langSwitch = lang === 'en'
     height: 4rem;
   }
   .header-name {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
     font-family: var(--font-display);
     font-weight: 700;
     font-size: 1.2rem;
+    letter-spacing: 0.01em;
     color: var(--ink);
+    line-height: 1;
+  }
+  .header-mark {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    transition: transform 0.2s;
+  }
+  .header-name:hover {
+    color: var(--route-blue);
+  }
+  .header-name:hover .header-mark {
+    transform: scale(1.06);
   }
   .header-nav {
     display: flex;
@@ -95,6 +115,8 @@ const langSwitch = lang === 'en'
     background: var(--ink);
   }
   @media (max-width: 768px) {
+    .header-name { font-size: 1.05rem; gap: 0.5rem; }
+    .header-mark { width: 26px; height: 26px; }
     .header-nav { display: none; }
     .mobile-menu-btn { display: flex; }
     .header-nav.active {

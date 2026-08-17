@@ -27,7 +27,7 @@ const statusLabel = {
       {publications.map((pub) => (
         <article class="pub-item">
           <div class="pub-img">
-            <img src={pub.image} alt={pub.title} loading="lazy" />
+            <img src={pub.image} alt={pub.title} loading="lazy" width={pub.imageSize.w} height={pub.imageSize.h} />
           </div>
           <div class="pub-content">
             <h4 class="pub-title">{pub.title}</h4>
@@ -71,7 +71,7 @@ const statusLabel = {
   }
   .pub-item {
     display: grid;
-    grid-template-columns: 240px 1fr;
+    grid-template-columns: 320px 1fr;
     gap: var(--spacing-md);
     padding: var(--spacing-md);
     background: white;
@@ -86,14 +86,12 @@ const statusLabel = {
     border-radius: 6px;
     overflow: hidden;
     border: 1px solid var(--soft-sage);
-    display: flex;
-    align-items: center;
     background: #f9fafb;
+    align-self: center;
   }
   .pub-img img {
     width: 100%;
     height: auto;
-    object-fit: contain;
   }
   .pub-content {
     display: flex;
@@ -183,9 +181,6 @@ const statusLabel = {
   @media (max-width: 768px) {
     .pub-item {
       grid-template-columns: 1fr;
-    }
-    .pub-img {
-      max-height: 180px;
     }
   }
 </style>

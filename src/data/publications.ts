@@ -9,6 +9,7 @@ export interface Publication {
   arxiv?: string;
   dataset?: string;
   image: string;
+  imageSize: { w: number; h: number };
   tldr: { en: string; zh: string };
 }
 
@@ -24,6 +25,7 @@ export const publications: Publication[] = [
     arxiv: 'https://arxiv.org/abs/2511.12449',
     dataset: 'https://huggingface.co/datasets/ZHNie/MBE2.0',
     image: '/assets/projects/moon2.png',
+    imageSize: { w: 4367, h: 2065 },
     tldr: {
       en: 'We propose Modality-Driven MoE and Dual-Level Alignment to solve modality imbalance in multimodal product representation, achieving SOTA on multiple benchmarks.',
       zh: '提出模态驱动 MoE 和双层对齐，解决多模态商品表征的模态不平衡问题，在多个基准上达到 SOTA。'
@@ -40,6 +42,7 @@ export const publications: Publication[] = [
     arxiv: 'https://arxiv.org/abs/2508.11999',
     dataset: 'https://huggingface.co/datasets/Daoze/MM-Bench-E-Commerce',
     image: '/assets/projects/moon1.png',
+    imageSize: { w: 4756, h: 1423 },
     tldr: {
       en: 'We propose the first generative MLLM-based product representation model with Guided MoE and specialized negative sampling.',
       zh: '首个基于生成式多模态大模型的商品表征模型，引入引导式 MoE 和专用负采样策略。'
@@ -55,6 +58,7 @@ export const publications: Publication[] = [
     role: 'Co-first author',
     arxiv: 'https://arxiv.org/abs/2604.00513',
     image: '/assets/projects/moon3.png',
+    imageSize: { w: 6130, h: 4101 },
     tldr: {
       en: 'We propose the first reasoning-aware MLLM for product representation, combining contrastive learning with GRPO reinforcement and a FIRE module for fine-grained details.',
       zh: '首个推理感知的多模态大模型商品表征系统，结合对比学习与 GRPO 强化训练及 FIRE 细粒度增强模块。'
@@ -69,6 +73,7 @@ export const publications: Publication[] = [
     role: 'Co-first author',
     arxiv: 'https://arxiv.org/abs/2511.11305',
     image: '/assets/projects/moon_report.png',
+    imageSize: { w: 5951, h: 2140 },
     tldr: {
       en: 'A comprehensive 31-page report documenting MOON deployment across Taobao search advertising, achieving cumulative +20% CTR over three years.',
       zh: '31 页完整技术报告，记录 MOON 在淘宝搜索广告全链路部署，累计 +20% CTR 提升。'

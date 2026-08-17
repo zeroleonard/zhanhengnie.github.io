@@ -1,5 +1,6 @@
 ---
 import { profile } from '../data/profile';
+import { internships } from '../data/experience';
 
 interface Props {
   lang: 'en' | 'zh';
@@ -44,21 +45,45 @@ const { lang } = Astro.props;
         </p>
       </div>
       <div class="hero-columns">
-        <div class="hero-col">
+        <div class="hero-block">
           <h3>{lang === 'en' ? 'Research Topics' : '研究方向'}</h3>
-          {profile.researchFocus[lang].map((f) => (
-            <div class="topic-item">
-              <p class="topic-title"><strong>{f.title}</strong></p>
-              <p class="topic-desc">{f.desc}</p>
-            </div>
-          ))}
+          <div class="topics-grid">
+            {profile.researchFocus[lang].map((f) => (
+              <div class="topic-item">
+                <p class="topic-title"><strong>{f.title}</strong></p>
+                <p class="topic-desc">{f.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
-        <div class="hero-col">
-          <h3>{lang === 'en' ? 'Education' : '教育背景'}</h3>
-          <p class="edu-item"><strong>{lang === 'en' ? 'Beihang University' : '北京航空航天大学'}</strong></p>
-          <p class="edu-detail">{lang === 'en' ? 'M.S., Computer Science, 2027\'' : '硕士，计算机科学，2027\''}</p>
-          <p class="edu-item"><strong>{lang === 'en' ? 'Beihang University' : '北京航空航天大学'}</strong></p>
-          <p class="edu-detail">{lang === 'en' ? 'B.Eng., Software Engineering, 2024\'' : '学士，软件工程，2024\''}</p>
+        <div class="hero-block record-block">
+          <div class="record-group">
+            <h3>{lang === 'en' ? 'Education' : '教育背景'}</h3>
+            <div class="record-pair">
+              <div class="record-entry">
+                <p class="record-org"><strong>{lang === 'en' ? 'Beihang University' : '北京航空航天大学'}</strong></p>
+                <p class="record-role">{lang === 'en' ? 'M.S., Computer Science' : '硕士，计算机科学'}</p>
+                <p class="record-period">Sep 2024 — Jun 2027</p>
+              </div>
+              <div class="record-entry">
+                <p class="record-org"><strong>{lang === 'en' ? 'Beihang University' : '北京航空航天大学'}</strong></p>
+                <p class="record-role">{lang === 'en' ? 'B.Eng., Software Engineering' : '学士，软件工程'}</p>
+                <p class="record-period">Sep 2019 — Jun 2024</p>
+              </div>
+            </div>
+          </div>
+          <div class="record-group">
+            <h3>{lang === 'en' ? 'Internship' : '实习经历'}</h3>
+            <div class="record-pair">
+              {internships.map((exp) => (
+                <div class="record-entry">
+                  <p class="record-org"><strong>{exp.brief?.org[lang] ?? exp.org[lang]}</strong></p>
+                  <p class="record-role">{exp.brief?.role[lang] ?? exp.title[lang]}</p>
+                  <p class="record-period">{exp.periodStart} — {exp.periodEnd}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
       <div class="hero-actions">
@@ -140,12 +165,33 @@ const { lang } = Astro.props;
     font-size: 0.9rem !important;
   }
   .hero-columns {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-md);
     margin: var(--spacing-md) 0;
   }
-  .hero-col h3 {
+  .hero-block + .hero-block {
+    margin-top: var(--spacing-sm);
+    padding-top: var(--spacing-sm);
+    border-top: 1px solid var(--soft-sage);
+  }
+  .topics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+  }
+  .record-block {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--spacing-md);
+  }
+  .record-group + .record-group {
+    padding-left: var(--spacing-md);
+    border-left: 1px solid var(--soft-sage);
+  }
+  .record-pair {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: var(--spacing-sm);
+  }
+  .hero-columns h3 {
     font-family: var(--font-body);
     font-size: 0.95rem;
     font-weight: 600;
@@ -153,25 +199,39 @@ const { lang } = Astro.props;
     color: var(--ink);
   }
   .topic-item {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0;
   }
   .topic-title {
     font-size: 0.88rem;
     color: var(--ink);
+    line-height: 1.35;
+    min-height: 2.7em;
+    margin-bottom: 0.2rem;
   }
   .topic-desc {
     font-size: 0.8rem;
     color: var(--slate);
     line-height: 1.4;
   }
-  .edu-item {
-    font-size: 0.88rem;
-    margin-bottom: 0.1rem;
+  .record-entry {
+    margin-bottom: 0.7rem;
   }
-  .edu-detail {
+  .record-entry:last-child {
+    margin-bottom: 0;
+  }
+  .record-org {
+    font-size: 0.88rem;
+    line-height: 1.4;
+  }
+  .record-role {
     font-size: 0.82rem;
     color: var(--slate);
-    margin-bottom: 0.5rem;
+    line-height: 1.4;
+  }
+  .record-period {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--slate);
   }
   .hero-actions {
     display: flex;
@@ -208,8 +268,22 @@ const { lang } = Astro.props;
     }
     .hero-left { margin-bottom: var(--spacing-md); }
     .hero-columns {
-      grid-template-columns: 1fr;
       text-align: left;
+    }
+    .topics-grid,
+    .record-block {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-sm);
+    }
+    .topic-title {
+      min-height: 0;
+    }
+    .record-group + .record-group {
+      padding-left: 0;
+      border-left: none;
+      margin-top: var(--spacing-sm);
+      padding-top: var(--spacing-sm);
+      border-top: 1px solid var(--soft-sage);
     }
     .hero-actions { justify-content: center; }
     .hero-bio { text-align: left; }
