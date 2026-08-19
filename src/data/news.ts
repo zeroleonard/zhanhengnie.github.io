@@ -6,7 +6,7 @@ export interface NewsItem {
 
 export const news: NewsItem[] = [
   {
-    date: 'Jun. 2026',
+    date: 'Jul. 2026',
     type: 'Research',
     content: {
       en: '<b>1 paper</b> accepted by ACM MM 2026 (co-first author)',
